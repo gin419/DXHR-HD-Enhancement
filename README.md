@@ -8,10 +8,10 @@ The current package is a community AI-upscaled texture pack. It replaces only a 
 
 The project intentionally does not modify the game's `BIGFILE.*` archives or replace the working ModHook DLL. The Chinese localization remains in `mods\zh-cn.000`, while the texture package is installed as `mods\ai_upscale.000` through `ai_upscale.005`.
 
-## Installation for friends
+## Installation
 
 1. Install the Steam Director's Cut normally.
-2. Install the Chinese patch from its original community source. The installer checks for `mods\zh-cn.000`.
+2. Install the [Simplified Chinese patch](https://steamcommunity.com/groups/tianmiao/discussions/0/1471967615878483558/) from its original community source. The installer checks for `mods\zh-cn.000`.
 3. Download this repository as a ZIP and open PowerShell in its folder.
 4. Run this command, replacing the path with the friend's Steam library path:
 
