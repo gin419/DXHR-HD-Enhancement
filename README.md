@@ -11,18 +11,18 @@ The project intentionally does not modify the game's `BIGFILE.*` archives or rep
 ## Installation
 
 1. Install the Steam Director's Cut normally.
-2. Install the [Simplified Chinese patch](https://steamcommunity.com/groups/tianmiao/discussions/0/1471967615878483558/) from its original community source. The installer checks for `mods\zh-cn.000`.
+2. The repository includes `ChinesePatch\DEHRCNv1.1.exe`, the original [Simplified Chinese patch](https://steamcommunity.com/groups/tianmiao/discussions/0/1471967615878483558/). The main installer can launch it for you with `-InstallChinesePatch`.
 3. Download this repository as a ZIP and open PowerShell in its folder.
 4. Run this command, replacing the path with the friend's Steam library path:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
-.\Install-DXHRHD.ps1 -GameDirectory "D:\SteamLibrary\steamapps\common\Deus Ex Human Revolution Director's Cut" -DownloadPackage
+.\Install-DXHRHD.ps1 -GameDirectory "D:\SteamLibrary\steamapps\common\Deus Ex Human Revolution Director's Cut" -InstallChinesePatch -DownloadPackage
 ```
 
 The script downloads the 2.01 GB texture archive from ModDB, verifies its size and MD5, creates one backup, installs the HD texture files, and preserves the Chinese patch and `DFEngine.dll`. Add `-LaunchGame` to start the game after installation.
 
-If the archive was downloaded manually, place `DXHR_AI_Upscale_v1.2.7z` beside the script and omit `-DownloadPackage`. The Chinese patch is not bundled because it is a separate community distribution.
+If the archive was downloaded manually, place `DXHR_AI_Upscale_v1.2.7z` beside the script and omit `-DownloadPackage`. If the Chinese patch was already installed, omit `-InstallChinesePatch`.
 
 ## Manual installation
 

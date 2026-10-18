@@ -3,6 +3,7 @@ param(
     [string]$GameDirectory = '',
     [string]$PackagePath = '',
     [switch]$DownloadPackage,
+    [switch]$InstallChinesePatch,
     [switch]$AllowWithoutChinesePatch,
     [switch]$LaunchGame
 )
@@ -60,6 +61,14 @@ $stagingDirectory = Join-Path $env:TEMP 'DXHR-HD-Enhancement-Staging'
 New-Item -ItemType Directory -Path $backupDirectory -Force | Out-Null
 if (-not (Test-Path -LiteralPath $gameExecutable -PathType Leaf)) {
     throw "DXHRDC.exe was not found in: $GameDirectory"
+}
+if (-not (Test-Path -LiteralPath $chinesePackage -PathType Leaf) -and $InstallChinesePatch) {
+    $chineseInstaller = Join-Path $scriptDirectory 'ChinesePatch\DEHRCNv1.1.exe'
+    if (-not (Test-Path -LiteralPath $chineseInstaller -PathType Leaf)) {
+        throw "Chinese patch installer was not found: $chineseInstaller"
+    }
+    Write-Output 'Launching the Chinese patch installer. Complete it, then return here.'
+    Start-Process -FilePath $chineseInstaller -Wait
 }
 if (-not (Test-Path -LiteralPath $chinesePackage -PathType Leaf) -and -not $AllowWithoutChinesePatch) {
     throw "Chinese patch was not detected at $chinesePackage. Install the Chinese patch first, or rerun with -AllowWithoutChinesePatch."
